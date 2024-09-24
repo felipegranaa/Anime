@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #4d3147; /* Color principal */
+    margin: 0;
+    padding: 0;
+    row-gap: 10px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff; /* Títulos en blanco para mayor contraste */
+}
+
+.container {
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #363636; /* Fondo oscuro para los contenedores */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.box {
+    border: 5px solid rgb(6, 6, 6);
+    flex-wrap: wrap;
+    background: gray;
+    width:150px;
+    height:auto;
+}
+
+.boxi {
+    margin-top: 5px;
+    gap: 25px;
+    border: 10px solid rgb(0, 0, 0);
+    background: gray;
+    flex-wrap: wrap;
+    border-radius: 5px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff; /* Labels en blanco */
+}
+
+input {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #363636; /* Fondo gris oscuro */
+    color: #ffffff; /* Texto blanco dentro de los inputs */
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #007BFF; /* Botón azul principal */
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1571d3; /* Efecto hover con azul más oscuro */
+}
+
+#result {
+    margin-top: 20px;
+    padding: 10px;
+    background: #000000;
+    border: 1px solid #000000;
+    border-radius: 4px;
+}
+
+.button-img {
+    gap: 20px;
+    border-color: rgb(6, 6, 6);
+    position: absolute;
+    width: auto;
+    height: auto;
+    border-radius: 5px;
+}
+
+.button-img img {
+    height: 20px;
+    width: 20px;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.anime-list {
+    display: -webkit-flex;
+    -webkit-box-direction: normal;
+    flex-wrap: wrap; /* Esto hará que los elementos salten a una nueva fila si no caben */
+    gap: 20px; /* Añade un espacio entre cada elemento */
+}
+
+.box {
+    flex: 1 1 150px; /* Permite que los elementos se expandan si hay espacio, pero sean al menos de 150px */
+    text-align: center; /* Centra el contenido dentro de cada caja */
+    margin: 1cm;
+
+}
+
+.box img {
+    width: 150px; /* Ajusta el tamaño de la imagen */
+    height: auto;
+}

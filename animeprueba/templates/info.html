@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información del Anime</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='info.css') }}">
+</head>
+<body>
+    <a href="/" class="button-img">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTeQtNOt1QYx4Dy7UO4t7veUOxG5yyig0KJQ&s" alt="flecha">
+    </a>
+    <h1>Información del Anime</h1>
+    
+     <!-- Título del anime -->
+    <p>{{ anime_info.title }}</p>
+
+    <!-- Imagen del póster del anime -->
+    <img src="{{ anime_info.poster }}" alt="{{ anime_info.title }}" style="width:100px;height:auto;">
+
+    <p>Estado: {{anime_info.debut}}</p>
+    <div class="boxi">
+        <p>Géneros:</p>
+        <ul>
+            {% for genre in anime_info.genres %}
+            <p> {{ genre }}</p>
+            {% endfor %}
+        </ul>
+    </div>
+    <!--sinopsis-->
+    <p>{{anime_info.synopsis}}</p>
+
+    <!-- Episodios -->
+    {% if anime_info.episodes %}
+        <ul>
+            {% for episode in anime_info.episodes %}
+            <div class="box">
+                <li>
+                    <a href="{{ url_for('episode',anime_id=episode.anime, episode_id=episode.id, server='MEGA') }}">episodio {{episode.id}}</a>
+                    <img src="{{ episode.image_preview }}" alt="Episodio {{ episode.id }}" style="width:100px;height:auto;">
+                </li>
+            </div>
+            <p></p>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay episodios disponibles para este anime.</p>
+    {% endif %}
+    
+    <!-- Enlace para volver a la búsqueda -->
+    <a href="/">Volver a la búsqueda</a>
+</body>
+</html>

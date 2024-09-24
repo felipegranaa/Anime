@@ -1,0 +1,164 @@
+
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body>
+    <script>
+        let posicionList = 2; // Posición inicial de list (2 es centro)
+        let posicionListi = 3; // Posición inicial de listi (3 es derecha)
+        const moveAmount = 1770; // Tamaño del desplazamiento
+    
+        // Función para mover la lista a la izquierda
+        function moveLeft() {
+            const list = document.getElementById('box');
+            const listi = document.getElementById('boxi');
+    
+            // Movimiento para `list`
+            if (posicionList === 3) {  // Si list está en la derecha (3), lo movemos al centro (2)
+                list.style.transform = `translateX(0px)`; // Mover al centro
+                posicionList = 2;
+            } else if (posicionList === 2) { // Si list está en el centro (2), lo movemos a la izquierda (1)
+                list.style.transform = `translateX(-${moveAmount}px)`; // Mover a la izquierda
+                posicionList = 1;
+            } else if (posicionList === 1) { // Si list está en la izquierda (1), lo movemos a la derecha (3)
+                list.style.transition = `transform 0s ease-in-out`; // Quitar la transición
+                list.style.transform = `translateX(${moveAmount}px)`; // Mover instantáneamente a la derecha
+                setTimeout(() => {  // Usamos setTimeout para aplicar el movimiento con transición
+                    list.style.transition = `transform 0.3s ease-in-out`;
+                    list.style.transform = `translateX(0px)`; // Mover al centro con transición
+                    posicionList = 2;
+                }, 50);  // Un ligero retraso para que el cambio sea fluido
+            }
+    
+            // Movimiento para `listi`
+            if (posicionListi === 3) {  // Si listi está en la derecha (3), lo movemos al centro (2)
+                listi.style.transform = `translateX(-${moveAmount}px)`; // Mover al centro
+                posicionListi = 2;
+            } else if (posicionListi === 2) { // Si listi está en el centro (2), lo movemos a la izquierda (1)
+                listi.style.transform = `translateX(-${moveAmount * 2}px)`; // Mover a la izquierda
+                posicionListi = 1;
+            } else if (posicionListi === 1) { // Si listi está en la izquierda (1), lo movemos a la derecha (3)
+                listi.style.transition = `transform 0s ease-in-out`; // Quitar la transición
+                listi.style.transform = `translateX(0px)`; // Mover instantáneamente a la derecha
+                setTimeout(() => {
+                    listi.style.transition = `transform 0.3s ease-in-out`;
+                    listi.style.transform = `translateX(-${moveAmount}px)`; // Mover al centro con transición
+                    posicionListi = 2;
+                }, 50);  // Un ligero retraso para que el cambio sea fluido
+            }
+        }
+
+
+
+        
+        // Función para mover la lista a la derecha
+        function moveRight() {
+        const list = document.getElementById('box');
+        const listi = document.getElementById('boxi');
+
+        // Movimiento para `list`
+        if (posicionList === 1) {  // Si list está en la izquierda (1), lo movemos al centro (2)
+            list.style.transform = `translateX(0px)`; // Mover al centro
+            posicionList = 2;
+        } else if (posicionList === 2) { // Si list está en el centro (2), lo movemos a la derecha (3)
+            list.style.transform = `translateX(${moveAmount}px)`; // Mover a la derecha
+            posicionList = 3;
+        } else if (posicionList === 3) { // Si list está en la derecha (3), lo movemos a la izquierda (1)
+            list.style.transition = `transform 0s ease-in-out`; // Quitar la transición
+            list.style.transform = `translateX(-${moveAmount}px)`; // Mover instantáneamente a la izquierda
+            setTimeout(() => {  // Usamos setTimeout para aplicar el movimiento con transición
+                list.style.transition = `transform 0.3s ease-in-out`;
+                list.style.transform = `translateX(0px)`; // Mover al centro con transición
+                posicionList = 2;
+            }, 50);  // Un ligero retraso para que el cambio sea fluido
+        }
+
+        // Movimiento para `listi`
+        if (posicionListi === 1) {  // Si listi está en la izquierda (1), lo movemos al centro (2)
+            listi.style.transform = `translateX(-${moveAmount}px)`; // Mover al centro
+            posicionListi = 2;
+        } else if (posicionListi === 2) { // Si listi está en el centro (2), lo movemos a la derecha (3)
+            listi.style.transform = `translateX(0px)`; // Mover a la derecha
+            posicionListi = 3;
+        } else if (posicionListi === 3) { // Si listi está en la derecha (3), lo movemos a la izquierda (1)
+            listi.style.transition = `transform 0s ease-in-out`; // Quitar la transición
+            listi.style.transform = `translateX(-${moveAmount * 2}px)`; // Mover instantáneamente a la izquierda
+            setTimeout(() => {
+                listi.style.transition = `transform 0.3s ease-in-out`;
+                listi.style.transform = `translateX(-${moveAmount}px)`; // Mover al centro con transición
+                posicionListi = 2;
+            }, 50);  // Un ligero retraso para que el cambio sea fluido
+        }
+    }
+</script>
+    <a href="/search" class="button-img">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9FR8YXWBfY3aX-q2ya4jSO3UYy66cBXrAi4rhJKE3AenIzXiCRznzwKAZAdv44iBFFSQ&usqp=CAU" alt="buscar">
+    </a>
+    <h1>Episodios recientes</h1>
+
+    <div class="bini">
+
+
+    <span>
+    <!-- Lista de episodios -->
+
+    <ul class="episode_list" id="anime-list">
+        <div class="lulu">
+            <p>Animes en emision</p>
+            {% for emi in emision %}
+            <a href="/info/{{emi}}">
+                <div class="lul">
+                    <img src="https://w7.pngwing.com/pngs/737/765/png-transparent-arrow-computer-icons-circle-arrow-angle-logo-share-icon-thumbnail.png" alt="">
+                    {{emi.replace('-',' ')}}
+            </div>
+            </a>
+            {% endfor %}
+        </div>
+
+        <li class="lisi">
+            {% for episode in last_episodes %}
+            <div class="boxo">
+                <a href="{{ url_for('episode', anime_id=episode.anime, episode_id=episode.id, server='MEGA') }}" class="button-img-anime">
+
+                    <div class="image-container">
+                        <img src="{{ episode.image_preview }}" alt="{{ episode.anime }}">
+                        <div class="overlay-text">
+                            <p>{{ episode.id }} : {{ episode.anime.replace('-', ' ') }}</p>
+                        </div>
+                        
+                    </div>
+                    
+                </a>
+                
+            </div>
+            {% endfor %}
+        </li>
+
+    </ul>
+
+
+    </span>
+    </div>
+
+    
+
+    <h1>Últimos Animes</h1>
+    <ul class="anime-list">
+        {% for last_anime in last_animes %}
+        <li class="boxa">
+            <a  href="{{ url_for('info', anime_id=last_anime.id) }}" class="button-img-anime">
+                <img src="https://www3.animeflv.net{{ last_anime.poster }}" alt="{{ last_anime.title }}">
+                {{ last_anime.title }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

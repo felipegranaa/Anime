@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #4d3147;
+    margin: 0;
+    padding: 0;
+    position: relative; /* Necesario para el posicionamiento absoluto del botón */
+}
+
+h1 {
+    color: aliceblue;
+}
+
+.anime-list {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben en una fila */
+    gap: 20px; /* Espacio entre los elementos */
+    list-style-type: none; /* Quita los bullets de la lista */
+    padding: 0;
+}
+
+.episode_list {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben en una fila */
+    gap: 20px; /* Espacio entre los elementos */
+    list-style-type:none; /* Quita los bullets de la lista */
+    padding: 0;
+}
+
+li {
+    text-align: center; /* Centra el texto debajo de la imagen */
+}
+
+img {
+    width: 100px;
+    height: auto;
+}
+
+.container {
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.box {
+    border: 1px;
+    border-color: rgb(0, 0, 0);
+    background: gray;
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+    flex-wrap: wrap;
+}
+
+.box img{
+    object-fit: contain;
+    width: 150px;
+    height: 150px;
+
+}
+
+.button-img {
+    display: inline-block;
+    text-decoration: none;
+    position: absolute; /* Posiciona el botón en la esquina superior derecha */
+    top: 10px; /* Espacio desde el borde superior */
+    right: 10px; /* Espacio desde el borde derecho */
+    background-color: gray; /* Fondo gris para el botón */
+    border-radius: 5px; /* Bordes redondeados opcionales */
+    padding: 5px; /* Espacio alrededor de la imagen dentro del botón */
+}
+
+.button-img img {
+    border: none;
+    border-radius: 5px;
+    transition: opacity 0.3s;
+    width: 20px;
+    height: 20px;
+    object-fit: contain; /* Asegura que la imagen mantenga sus proporciones */
+}
+
+.button-img img:hover {
+    opacity: 0.8;
+}
+
+.boxi {
+    border: 10px;
+    border-color: rgb(0, 0, 0);
+    background: gray;
+    width: auto;
+    flex-wrap: wrap;
+}
