@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
+</head>
+<body>
+    <h1>Resultados de la búsqueda</h1>
+    <div class="boxi">
+        <a href="/search" class="button-img">
+            <img src="https://images.vexels.com/media/users/3/143356/isolated/preview/64e14fe0195557e3f18ea3becba3169b-buscar-lupa.png" alt="Ir a Ejemplo" height="20" width="20">
+        </a>    
+    </div>
+    <ul class="anime-list">
+        {% for result in results %}
+        <div class="box">
+            <li>
+                <img src="{{ result['poster'] }}" alt="{{ result['title'] }}" style="width:150px;height:auto;">
+                <a href="{{ url_for('info', anime_id=result['id']) }}">{{ result['title'] }}</a>
+            </li>
+        </div>
+        {% endfor %}
+    </ul>
+    <a href="/search">Volver a la búsqueda</a>
+    <div class="box">
+        <a href="/" class="button-img">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAR0AAACxCAMAAADOHZloAAAAbFBMVEX///8AAACUlJShoaGDg4N1dXVqamqZmZmnp6ebm5uenp6Li4uIiIiTk5OkpKSzs7NlZWXf39/Nzc23t7d+fn6+vr7X19esrKy9vb3U1NRBQUFQUFD4+Pjt7e1gYGDd3d1aWlosLCwjIyMMDAzyyMS1AAADwUlEQVR4nO2d2VLqUBREcwQZBWVyIKjo/f9/vAVyAUPSnRdvH9m9nimqa9UZcobsFMWP8NhJ09nP/PVvZ/6WvlhaUJXZOp3obdRx8mKRvuPmc8Z9qmI9R54u5KTkznWgTk56U6fKhEGdnJTe1bmyoEFOulUHy4FOg5yU1MkyoFmOuxaSk1bqcGqGQE66V6cT00dy0rM6nhYsJ72o80mB3SoFn7MmRM5WHVAJkxN6yqJyPtQJhYyZnPSqjqjjjsp5VEfUweXM1RF10DEn8ohsOQAuJ/ASgs9WC3VEHVxO4KV513KaWVpOM1xO4DHHLQfA5TypI+rgA/JAHVEHlzNSR9RhOQAup6OOqIMPyFN1RB1cTuCWc2s5zbhbAfiAHFgO30O2HMupw3IAlgPg26SWAwi8KrccAB9zLMdy6rAcgLdJAZYD4KvywHLccgBcjs+t3HLq8GYXwKtygLsVwHIAlgOwHIDlACwH4FsWAN/PAfBVeWA5vOX01RF1cDk36og6uJyxOqIOywFwOXfqiDr4lsVSHVEHlxO4BpPlAPiYk9ZlWW4f9vTOuK2w7F4wntz8B/oXDL8zOqfTyOjiDfoWcgLxObAcxJ+zIgN8zInHcU3ALy9F5PDge1m41ezYlxrYqFNky658La/XEJXdukmdIWOKYqWOkDErP+oAukWpjpAx22LNfxSWdbFVR8iY0uMOoOs5C7Dy8w7AuxeAsddZgP1nQqpfnjFfHMoBooL1cZn82/5itbUjMjxtnd6os2THt+K1pGx9MD6rr3+0aD1lWVYOs+hB1pG78W8+z2qzRdirPSYMgvVA+MFNVx1RCdcT+HJTmzPRCf+T64XrCXypso2ewBdy2+gJfJm7jZ7Ab0m4EBHBr8tCXDUFYj0Q64G40hfEXxqBWA/EeiB8aLYeSODiRNZDcOeCWA/EeiD+xhqEP/eEHpq95oJYD8R6IPyM3XqspwmuJ/RWvFsPxHog1gPhdwtDjz1cT+jW484F8cQOceuBWA/EQzPEeiC8c4W+W8jfyAl9t5C/7hZ6YuetJ3Tn4kNz6M7FW0/omYvrCX3OxfWEPiXlM1doPSOqZ6GOqIRXQXhWR1TC9cz5n1wvXE/N291xmFI9r+qISmjr+VAnlDJgelbqhFKYnq06oJYnokedTwzR86LOJwbriT3wFKT8eejl1h6kJ3zbgYX53tXZMqBZjzpZFjTpCV3z6cTcHQtRq+dBnSobXmrsbNSh8uFSz0wdKSdmloN4Pf/KQM/dqsr87eCm64ZTy2yYpleg5i8OsEcm40fC9gAAAABJRU5ErkJggg==" alt="flecha">
+        </a>
+    </div>
+</body>
+</html>

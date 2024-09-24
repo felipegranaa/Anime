@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='episode.css') }}">
+</head>
+<body>
+    <!-- Enlace al siguiente episodio -->
+    <a href="{{ url_for('episode', anime_id=anime_id, episode_id=next_episode, server='MEGA') }}" class="button">Siguiente episodio</a>
+
+    <!-- Botón para regresar -->
+    <a href="/" class="button-img">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTeQtNOt1QYx4Dy7UO4t7veUOxG5yyig0KJQ&s" alt="flecha">
+    </a>
+
+    <!-- Título del episodio -->
+    <h1>{{ anime_name }} - Episodio {{ episode_id }}</h1>
+
+    {% if episode %}
+        <!-- Servidores de Video -->
+        <h2>Servidores de Video</h2>
+        <ul>
+            {% for servers in episode[0] %}
+                <li class="episode_list">
+                    <div class="box">
+                        <a href="{{ url_for('episode', anime_id=anime_id, episode_id=episode_id, server=servers.title) }}" class="button">{{ servers.title }}</a>
+                    </div>
+                    <strong>{{ servers['title'] }}:</strong>
+                    <iframe src="{{ servers.code }}" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+                </li>
+            {% endfor %}
+        </ul>
+        <ul>
+            {% for episode in anime_info.episodes %}
+            <div class="boxi">
+                <li>
+                    <a href="{{ url_for('episode',anime_id=episode.anime, episode_id=episode.id, server='MEGA') }}">episodio {{episode.id}}</a>
+                </li>
+            </div>
+            {% endfor %}
+        </ul>
+        <!-- Links de Descarga -->
+        <h2>Links de Descarga</h2>
+        <ul>
+            {% for link in link %}
+                <li>
+                    <a href="{{ link['url'] }}" target="_blank">{{ link['quality'] }} - {{ link['server'] }}</a>
+                </li>
+            <p></p>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontró el episodio.</p>
+    {% endif %}
+</body>
+</html>

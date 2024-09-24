@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime</title>
+    <style>
+        .anime-list {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .anime-item {
+            margin: 10px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            transition: transform 0.2s;
+            text-align: center;
+        }
+        .anime-item:hover {
+            transform: scale(1.02);
+        }
+        .loading {
+            text-align: center;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="/" class="button-img">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTeQtNOt1QYx4Dy7UO4t7veUOxG5yyig0KJQ&s" alt="flecha">
+    </a>
+
+    <div class="boxi" id="boxi">
+        <h1>Buscar Anime</h1>
+        <form action="/search" id="search-form" method="GET">
+            <label for="query">Buscar Anime</label>
+            <input type="text" id="query" name="query" placeholder="Buscar anime">
+            <button type="submit">Buscar</button>
+        </form>
+        
+        <form action="/search/geners" method="POST">
+            <label for="generos">Selecciona géneros:</label>
+            <select id="generos" name="generos" multiple>
+                <option value="Acción">Acción</option>
+                <option value="Artes-Marciales">Artes Marciales</option>
+                <option value="Aventura">Aventuras</option>
+                <option value="Carreras">Carreras</option>
+                <option value="Ciencia-Ficción">Ciencia Ficción</option>
+                <option value="Comedia">Comedia</option>
+                <option value="Demencia">Demencia</option>
+                <option value="Demonios">Demonios</option>
+                <option value="Deportes">Deportes</option>
+                <option value="Drama">Drama</option>
+                <option value="Ecchi">Ecchi</option>
+                <option value="Escolares">Escolares</option>
+                <option value="Espacial">Espacial</option>
+                <option value="Fantasía">Fantasía</option>
+                <option value="Harem">Harem</option>
+                <option value="Historico">Histórico</option>
+                <option value="Infantil">Infantil</option>
+                <option value="Josei">Josei</option>
+                <option value="Juegos">Juegos</option>
+                <option value="Magia">Magia</option>
+                <option value="Mecha">Mecha</option>
+                <option value="Militar">Militar</option>
+                <option value="Misterio">Misterio</option>
+                <option value="Música">Música</option>
+                <option value="Parodia">Parodia</option>
+                <option value="Policía">Policía</option>
+                <option value="Psicológico">Psicológico</option>
+                <option value="Recuentos-de-la-vida">Recuentos de la vida</option>
+                <option value="Romance">Romance</option>
+                <option value="Samurai">Samurai</option>
+                <option value="Seinen">Seinen</option>
+                <option value="Shoujo">Shoujo</option>
+                <option value="Shounen">Shounen</option>
+                <option value="Sobrenatural">Sobrenatural</option>
+                <option value="Superpoderes">Superpoderes</option>
+                <option value="Suspenso">Suspenso</option>
+                <option value="Terror">Terror</option>
+                <option value="Vampiros">Vampiros</option>
+                <option value="Yaoi">Yaoi</option>
+                <option value="Yuri">Yuri</option>
+            </select>
+            <br>
+            <input type="submit" value="Buscar Animes">
+        </form>
+        
+    </div>
+
+    <div class="anime-list" id="anime-list"></div>
+    <div class="loading" id="loading" style="display:none;">Cargando más animes...</div>
+
+    <script src="{{ url_for('static', filename='anime-search.js') }}"></script>
+</body>
+</html>

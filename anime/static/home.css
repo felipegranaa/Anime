@@ -1,0 +1,293 @@
+:root {
+    --color1: #ffffff; /* Color para títulos */
+    --color2: #ffa502; /* Color para textos menos importantes */
+    --color3: #1e272e; /* Color de fondo de la página */
+    --color4: #487eb0; /* Color de fondos de cajas o contenedores */
+    --color5: #ff6348; /* Color para bordes y detalles */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--color3); /* Fondo de la página */
+    margin: 0;
+    padding: 0;
+    position: relative; /* Necesario para el posicionamiento absoluto del botón */
+}
+
+h1, h2 {
+    color: var(--color1); /* Color de los títulos */
+    text-align: center;
+}
+
+a, p {
+    color: var(--color2); /* Color de los textos menos importantes */
+}
+
+.anime-list {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben en una fila */
+    gap: 15px; /* Espacio entre los elementos */
+    list-style-type: none; /* Quita los bullets de la lista */
+    padding-left: 5cm;
+    padding-right: 5cm;
+}
+
+.episode_list {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben en una fila */
+    gap: 20px; /* Espacio entre los elementos */
+    list-style-type: none; /* Quita los bullets de la lista */
+    padding-left: 12cm;
+    padding-right: 5cm;
+    padding-top: 1cm;
+    border: 20cm;
+    overflow: hidden;
+    background-color: #587eb0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    list-style-type: none;
+    align-items: center;
+}
+
+li {
+    text-align: center; /* Centra el texto debajo de la imagen */
+}
+
+img {
+    width: 100px;
+    height: auto;
+}
+
+.container {
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: var(--color4); /* Fondo de contenedores */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.box {
+    display: flex;
+    position: relative;
+    right: 0.5cm;
+    background-color: var(--color4); /* Fondo de las cajas */
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 10px;
+    transition: transform 0.3s ease-in-out;
+    width: auto;
+    height: 120px;
+    
+}
+    
+
+.boxo {
+    background-color: var(--color1); /* Fondo de las cajas */
+    width:  200px;
+    height: auto;
+    object-fit: contain;
+    flex-wrap: wrap;
+    display: inline-block;
+    margin-right: 10px;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.boxa{
+    border: 1px solid var(--color2);
+    background-color: var(--color4); /* Fondo de las cajas */
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+    flex-wrap: wrap;
+}
+
+.boxa img {
+    object-fit: contain;
+    width: 150px;
+    height: 150px;
+}
+
+.box img {
+    object-fit: contain;
+    width: 150px;
+    height: 150px;
+}
+
+.button-img {
+    display: inline-block;
+    text-decoration: none;
+    position: absolute; /* Posiciona el botón en la esquina superior derecha */
+    top: 10px; /* Espacio desde el borde superior */
+    right: 10px; /* Espacio desde el borde derecho */
+    background-color: var(--color4); /* Fondo de los botones */
+    border-radius: 5px; /* Bordes redondeados opcionales */
+}
+
+.button-img img {
+    border: none;
+    border-radius: 5px;
+    transition: opacity 0.3s;
+    width: 20px;
+    height: 20px;
+    object-fit: contain; /* Asegura que la imagen mantenga sus proporciones */
+}
+
+.button-img img:hover {
+    opacity: 0.8;
+}
+
+.boxi {
+    position: relative;
+    background-color: var(--color4); /* Fondo de la caja grande */
+    display: flex;
+    background-color: var(--color4); /* Fondo de las cajas */
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+a:hover{
+    color: #fff;
+}
+
+.button-img-anime {
+    display: flex;
+    flex-wrap: wrap;
+    text-decoration: none;
+    background-color: var(--color4); /* Fondo de los botones */
+    height: auto;
+}
+
+.button-img-anime img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain; /* Asegura que la imagen mantenga sus proporciones */
+}
+
+
+
+button{
+    background: #687eb0;
+}
+
+.button-img-epi {
+    margin-left: 98%;
+    position: relative;
+    top: -2.73cm;
+    /*margin-top: 5.8cm;*/
+    display: flex;
+    flex-wrap: wrap;
+    text-decoration: none;
+    background-color: #587eb0; /* Fondo de los botones */
+    opacity: 0.9;
+}
+
+.button-img-epi img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain; /* Asegura que la imagen mantenga sus proporciones */
+}
+
+.button-img-epi img:hover {
+    opacity: 0.6;
+}
+
+
+.button-img-epi-left {
+    margin-top: 5.8cm;
+    height: 25px;
+    opacity: 0.9;
+    transform: rotate(180deg);
+    display: flex;
+    flex-wrap: wrap;
+    text-decoration: none;
+    background-color: #587eb0; /* Fondo de los botones */
+}
+
+.button-img-epi-left img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain; /* Asegura que la imagen mantenga sus proporciones */
+}
+
+.button-img-epi-left img:hover {
+    opacity: 0.6;
+}
+
+.boxi{
+    transition: transform 0.3s ease-in-out;}
+/* Mover a la izquierda o derecha */
+.mover-derecha {
+    transform: translateX(-100%);
+}
+
+.mover-izquierda {
+    transform: translateX(100%);
+}
+.boxi img {
+    object-fit: contain;
+    width: 150px;
+    height: 150px;
+}
+
+/* Contenedor de la imagen */
+.image-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 5%;
+    color: #fff;
+}
+
+/* Imagen con efecto de zoom */
+.image-container img {
+    border-radius: 5%;
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+
+.image-container:hover img {
+    transform: scale(1.3); /* Aumenta el tamaño de la imagen al hacer hover */
+    opacity: 0.8;
+}
+
+/* Texto sobre la imagen con efecto de difuminado */
+.overlay-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent); /* Gradiente difuminado */
+    color: white;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Texto truncado si es demasiado largo */
+.overlay-text p {
+    color: #fff;
+    margin: 0;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.lisi{
+    flex-basis: 55%;
+}
