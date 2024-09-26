@@ -1,9 +1,18 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #4d3147;
     margin: 0;
     padding: 0;
     position: relative; /* Necesario para el posicionamiento absoluto del botón */
+    background-color: rgb(17, 18, 23);
+    background: repeating-linear-gradient(
+        45deg,
+        rgb(18, 20, 19), 
+        rgb(18, 20, 19) 10px, 
+        #111217 10px, 
+        #111217 20px
+      );
+
+
 }
 
 h1 {

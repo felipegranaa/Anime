@@ -8,10 +8,19 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: var(--color3); /* Fondo de la página */
     margin: 0;
     padding: 0;
     position: relative; /* Necesario para el posicionamiento absoluto del botón */
+    background-color: rgb(17, 18, 23);
+    background: repeating-linear-gradient(
+        45deg,
+        rgb(18, 20, 19), 
+        rgb(18, 20, 19) 10px, 
+        #111217 10px, 
+        #111217 20px
+      );
+
+
 }
 
 h1, h2 {
@@ -40,9 +49,10 @@ a, p {
     padding-left: 12cm;
     padding-right: 5cm;
     padding-top: 1cm;
-    border: 20cm;
+    border: 10cm;
+    border-color:rgb(18, 20, 19) ;
     overflow: hidden;
-    background-color: #587eb0;
+
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -89,7 +99,6 @@ img {
     
 
 .boxo {
-    background-color: var(--color1); /* Fondo de las cajas */
     width:  200px;
     height: auto;
     object-fit: contain;
@@ -102,12 +111,11 @@ img {
 }
 
 .boxa{
-    border: 1px solid var(--color2);
-    background-color: var(--color4); /* Fondo de las cajas */
     width: 150px;
     height: auto;
     object-fit: contain;
     flex-wrap: wrap;
+    border: 0px solid #000000;
 }
 
 .boxa img {
@@ -164,10 +172,11 @@ a:hover{
 }
 
 .button-img-anime {
+    border: 1px solid #000000;
+    border-radius: 5%;
     display: flex;
     flex-wrap: wrap;
     text-decoration: none;
-    background-color: var(--color4); /* Fondo de los botones */
     height: auto;
 }
 
@@ -177,7 +186,20 @@ a:hover{
     object-fit: contain; /* Asegura que la imagen mantenga sus proporciones */
 }
 
+.button-img-anime-a {
+    border-radius: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    text-decoration: none;
+    height: auto;
+    color: #787878;
+}
 
+.button-img-anime-a img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain; /* Asegura que la imagen mantenga sus proporciones */
+}
 
 button{
     background: #687eb0;
@@ -290,4 +312,41 @@ button{
 
 .lisi{
     flex-basis: 55%;
+}
+.lul{
+    background-color: #fff;
+    border: 2px solid #000000;
+    border-radius: 10%;
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom:  5px;
+}
+
+.lul img{
+    width: 20px;
+    height: 20px;
+    object-fit: contain; /* Asegura que la imagen mantenga sus proporciones */
+}
+
+.lulu{
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.lulu a{
+    color: #000000;
+
+}
+.lulu a :hover{
+    color: #787878;
+    text-overflow: inherit;
+}
+
+.noni{
+    background-color: rgb(10, 10, 10);
+    border-radius: 5%;
+    border: 1px solid #000000;
 }

@@ -176,11 +176,11 @@ class AnimeFLV(object):
             anime_links = soup.find_all('a', class_='fa-play-circle')
 
             # Extraer y mostrar el texto del nombre de cada anime
-            anime_names = [link.get_text(strip=True) for link in anime_links]
+            anime_names = [link['href'].replace('/anime/','')for link in anime_links]
 
             for name in anime_names:
                 List_emi.append(name)
-                
+
             return List_emi
         else:
             print(f'Error al acceder a la página: {response.status_code}')

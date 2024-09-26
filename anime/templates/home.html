@@ -104,20 +104,29 @@
     <h1>Episodios recientes</h1>
 
     <div class="bini">
-    <span>
-    <!-- Botón para mover hacia la izquierda -->
 
-    </span>
 
     <span>
     <!-- Lista de episodios -->
-    <ul class="episode_list" id="anime-list">
 
-    
+    <ul class="episode_list" id="anime-list">
+        <div class="lulu">
+            <p>Animes en emision</p>
+            {% for emi in emision %}
+            <a href="/info/{{emi}}">
+                <div class="lul">
+                    <img src="https://w7.pngwing.com/pngs/737/765/png-transparent-arrow-computer-icons-circle-arrow-angle-logo-share-icon-thumbnail.png" alt="">
+                    {{emi.replace('-',' ')}}
+            </div>
+            </a>
+            {% endfor %}
+        </div>
+
         <li class="lisi">
             {% for episode in last_episodes %}
             <div class="boxo">
                 <a href="{{ url_for('episode', anime_id=episode.anime, episode_id=episode.id, server='MEGA') }}" class="button-img-anime">
+
                     <div class="image-container">
                         <img src="{{ episode.image_preview }}" alt="{{ episode.anime }}">
                         <div class="overlay-text">
@@ -132,12 +141,8 @@
             {% endfor %}
         </li>
 
-        
-
     </ul>
-    </span>
-    <span>
-    <!-- Botón para mover hacia la derecha -->
+
 
     </span>
     </div>
@@ -148,8 +153,10 @@
     <ul class="anime-list">
         {% for last_anime in last_animes %}
         <li class="boxa">
-            <a  href="{{ url_for('info', anime_id=last_anime.id) }}" class="button-img-anime">
-                <img src="https://www3.animeflv.net{{ last_anime.poster }}" alt="{{ last_anime.title }}">
+            <a  href="{{ url_for('info', anime_id=last_anime.id) }}" class="button-img-anime-a">
+                <div class="noni">
+                    <img src="https://www3.animeflv.net{{ last_anime.poster }}" alt="{{ last_anime.title }}">
+                </div>
                 {{ last_anime.title }}
             </a>
         </li>
