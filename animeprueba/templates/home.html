@@ -153,8 +153,10 @@
     <ul class="anime-list">
         {% for last_anime in last_animes %}
         <li class="boxa">
-            <a  href="{{ url_for('info', anime_id=last_anime.id) }}" class="button-img-anime">
-                <img src="https://www3.animeflv.net{{ last_anime.poster }}" alt="{{ last_anime.title }}">
+            <a  href="{{ url_for('info', anime_id=last_anime.id) }}" class="button-img-anime-a">
+                <div class="noni">
+                    <img src="https://www3.animeflv.net{{ last_anime.poster }}" alt="{{ last_anime.title }}">
+                </div>
                 {{ last_anime.title }}
             </a>
         </li>
