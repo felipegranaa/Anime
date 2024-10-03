@@ -310,76 +310,82 @@ class AnimeFLV(object):
         """
         response = self._scraper.get(f"{ANIME_URL}/{id}")
         soup = BeautifulSoup(response.text, "lxml")
-
-        information = {
-            "title": soup.select_one(
-                "body div.Wrapper div.Body div div.Ficha.fchlt div.Container h1.Title"
-            ).string,
-            "poster": BASE_URL
-            + "/"
-            + soup.select_one(
-                "body div div div div div aside div.AnimeCover div.Image figure img"
-            ).get("src", ""),
-            "synopsis": soup.select_one(
-                "body div div div div div main section div.Description p"
-            ).string.strip(),
-            "rating": soup.select_one(
-                "body div div div.Ficha.fchlt div.Container div.vtshr div.Votes span#votes_prmd"
-            ).string,
-            "debut": soup.select_one(
-                "body div.Wrapper div.Body div div.Container div.BX.Row.BFluid.Sp20 aside.SidebarA.BFixed p.AnmStts"
-            ).string,
-            "type": soup.select_one(
-                "body div.Wrapper div.Body div div.Ficha.fchlt div.Container span.Type"
-            ).string,
-        }
-        information["banner"] = (
-            information["poster"].replace("covers", "banners").strip()
-        )
-        genres = []
-
-        for element in soup.select("main.Main section.WdgtCn nav.Nvgnrs a"):
-            if "=" in element["href"]:
-                genres.append(element["href"].split("=")[1])
-
-        info_ids = []
-        episodes_data = []
-        episodes = []
-
+        
         try:
-            for script in soup.find_all("script"):
-                contents = str(script)
+            information = {
+                "title": soup.select_one(
+                    "body div.Wrapper div.Body div div.Ficha.fchlt div.Container h1.Title"
+                ).string,
+                "poster": BASE_URL
+                + "/"
+                + soup.select_one(
+                    "body div div div div div aside div.AnimeCover div.Image figure img"
+                ).get("src", ""),
+                "synopsis": soup.select_one(
+                    "body div div div div div main section div.Description p"
+                ).string.strip(),
+                "rating": soup.select_one(
+                    "body div div div.Ficha.fchlt div.Container div.vtshr div.Votes span#votes_prmd"
+                ).string,
+                "debut": soup.select_one(
+                    "body div.Wrapper div.Body div div.Container div.BX.Row.BFluid.Sp20 aside.SidebarA.BFixed p.AnmStts"
+                ).string,
+                "type": soup.select_one(
+                    "body div.Wrapper div.Body div div.Ficha.fchlt div.Container span.Type"
+                ).string,
+            }
 
-                if "var anime_info = [" in contents:
-                    anime_info = contents.split("var anime_info = ")[1].split(";")[0]
-                    info_ids.append(json.loads(anime_info))
 
-                if "var episodes = [" in contents:
-                    data = contents.split("var episodes = ")[1].split(";")[0]
-                    episodes_data.extend(json.loads(data))
+            
+            information["banner"] = (
+                information["poster"].replace("covers", "banners").strip()
+            )
+            genres = []
 
-            AnimeThumbnailsId = info_ids[0][0]
-            animeId = info_ids[0][2]
-            # nextEpisodeDate = info_ids[0][3] if len(info_ids[0]) > 4 else None
+            for element in soup.select("main.Main section.WdgtCn nav.Nvgnrs a"):
+                if "=" in element["href"]:
+                    genres.append(element["href"].split("=")[1])
 
-            for episode, _ in episodes_data:
-                episodes.append(
-                    EpisodeInfo(
-                        id=episode,
-                        anime=id,
-                        image_preview=f"{BASE_EPISODE_IMG_URL}{AnimeThumbnailsId}/{episode}/th_3.jpg",
+            info_ids = []
+            episodes_data = []
+            episodes = []
+
+            try:
+                for script in soup.find_all("script"):
+                    contents = str(script)
+
+                    if "var anime_info = [" in contents:
+                        anime_info = contents.split("var anime_info = ")[1].split(";")[0]
+                        info_ids.append(json.loads(anime_info))
+
+                    if "var episodes = [" in contents:
+                        data = contents.split("var episodes = ")[1].split(";")[0]
+                        episodes_data.extend(json.loads(data))
+
+                AnimeThumbnailsId = info_ids[0][0]
+                animeId = info_ids[0][2]
+                # nextEpisodeDate = info_ids[0][3] if len(info_ids[0]) > 4 else None
+
+                for episode, _ in episodes_data:
+                    episodes.append(
+                        EpisodeInfo(
+                            id=episode,
+                            anime=id,
+                            image_preview=f"{BASE_EPISODE_IMG_URL}{AnimeThumbnailsId}/{episode}/th_3.jpg",
+                        )
                     )
-                )
 
-        except Exception as exc:
-            raise AnimeFLVParseError(exc)
+            except Exception as exc:
+                raise AnimeFLVParseError(exc)
 
-        return AnimeInfo(
-            id=id,
-            episodes=episodes,
-            genres=genres,
-            **information,
-        )
+            return AnimeInfo(
+                id=id,
+                episodes=episodes,
+                genres=genres,
+                **information,
+            )
+        except AttributeError:
+            return "atributo error" 
 
     def _process_anime_list_info(self, elements: ResultSet) -> List[AnimeInfo]:
         ret = []

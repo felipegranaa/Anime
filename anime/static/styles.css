@@ -122,3 +122,31 @@ button:hover {
     width: 150px; /* Ajusta el tamaño de la imagen */
     height: auto;
 }
+.noni{
+    background-color: rgb(10, 10, 10);
+    border-radius: 5%;
+    border: 1px solid #000000;
+}
+.nonis{
+    display: flex;
+    width: auto;
+}
+.nonas {
+    visibility: hidden;
+    position: absolute; /* Para colocar el pie de texto sobre la imagen */
+    bottom: 0;
+    width: 160%;
+    background-color: rgba(0, 0, 0); /* Fondo negro semi-transparente */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    z-index: 3;
+}
+
+.nonis {
+    position: relative; /* Para hacer que los elementos hijos sean relativos a este contenedor */
+}
+
+.nonis:hover .nonas {
+    visibility: visible; /* Mostrar el pie de texto al pasar el mouse sobre el contenedor */
+}
